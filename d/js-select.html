@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>royaso's demo pages</title>
+</head>
+<body>
+  <span id='test'>this is text that will be selected when you click last button</span>
+  <button id='select' onclick='selectme()'>select it </button>
+
+  <script>
+    function selectme(){
+    var range=document.createRange();
+    range.selectNode(document.getElementById('test'));
+    window.getSelection().addRange(range);
+  }
+  </script>
+</body>
+</html>
