@@ -1,0 +1,594 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>ECMAScript 6 特性速览(翻) | &lt;h1&gt;My Coding Life&lt;/h1&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Bin">
+    
+    <meta name="description" content="原文地址:http://www.frontendjournal.com/javascript-es6-learn-important-features-in-a-few-minutes/
+　　下一个Javascript版本，也就是ECMAScript 6(ES6或者Harmony)，给我们带来了很多">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/author.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/author.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/author.png">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/author.png" alt="&lt;h1&gt;My Coding Life&lt;/h1&gt;" title="&lt;h1&gt;My Coding Life&lt;/h1&gt;"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="&lt;h1&gt;My Coding Life&lt;/h1&gt;">&lt;h1&gt;My Coding Life&lt;/h1&gt;</a></h1>
+				<h2 class="blog-motto">Better Wife , Better Life</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/05/24/[翻]ecmascript-6-特性速览/" title="ECMAScript 6 特性速览(翻)" itemprop="url">ECMAScript 6 特性速览(翻)</a>
+  </h1>
+  <p class="article-author">By
+      <a href="http://lakb248.github.io/about" title="Bin" target="_blank">Bin</a>
+  <p class="article-time">
+    <time datetime="2014-05-24T13:37:42.000Z" itemprop="datePublished">发表于5月 24 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<p>原文地址:<a href="http://www.frontendjournal.com/javascript-es6-learn-important-features-in-a-few-minutes/" target="_blank">http://www.frontendjournal.com/javascript-es6-learn-important-features-in-a-few-minutes/</a></p>
+<p>　　下一个Javascript版本，也就是ECMAScript 6(ES6或者Harmony)，给我们带来了很多令人兴奋的特性。下面我们来快速看看这些特性。下面列出的这些特性是我觉得很可能会在你日常工作中用到的。<br>　　如果你是一个Javascript新手或者原来是做服务器端开发的，那么你也不必担心，我相信现在是学习Javascript的最好时机，因为ES6有很多简介并且友好的特性。</p>
+<h1 id="类">类</h1>
+<p>　　总所周知，Javascript不像其他面向对象语言那样支持类，但是Javascript可以通过函数和原型来模拟类。<br>　　下面是一个创建类的新语法。如果你学习过Java或者其他面向对象语言的话，你会觉得很熟悉。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre><span class="keyword">class</span> Project {  
+  constructor(name) {
+    <span class="keyword">this</span>.name = name;
+  }
+
+  start() {
+    <span class="keyword">return</span> <span class="string">"Project "</span> + <span class="keyword">this</span>.name + <span class="string">" starting"</span>;
+  }
+}
+
+<span class="keyword">var</span> project = <span class="keyword">new</span> Project(<span class="string">"Journal"</span>);  
+project.start(); <span class="comment">// "Project Journal starting"</span>
+</pre></td></tr></table></figure>
+
+
+<p>　　所有你在类里面声明的方法都会添加到类的原型中。
+　</p>
+<h1 id="ES6和原型中的继承">ES6和原型中的继承</h1>
+<p>　　正如前面说的，Javascript不支持类。所以，既然它不支持类，那么它支持继承吗？<br>　　的确，Javascript中的继承大部分是通过原型实现。如果你对原型不熟悉，那么一个好消息就是在ES6中你没必要了解原型就可以使用类和继承。原型并不难学习但是在这里你只要知道原型是javascript中实现继承的一种方式就可以了。<br>　　下面我创建了一个Project的子类，命名为WebProject并且继承Project中的属性和方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="code"><pre><span class="keyword">class</span> WebProject extends Project {  
+  constructor(name, technologies) {
+    super(name);
+    <span class="keyword">this</span>.technologies = technologies;
+  }
+
+  info() {
+    <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">" uses "</span> + arrayToString(<span class="keyword">this</span>.technology);
+  }
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">arrayToString</span><span class="params">(param)</span> {</span>  
+  <span class="comment">// ... some implementation</span>
+}
+
+<span class="keyword">var</span> webJournal = <span class="keyword">new</span> WebProject(<span class="string">"FrontEnd Journal"</span>, <span class="string">"javascript"</span>);  
+webJournal.start(); <span class="comment">// "FrontEnd Journal starting"  </span>
+webJournal.info(); <span class="comment">// "FrontEnd Journal uses javascript"</span>
+</pre></td></tr></table></figure>
+
+
+<p>　　注意到在WebProject的构造函数中调用了Project的构造函数，然后就可以使用它的属性和方法了。
+　　</p>
+<h1 id="模块">模块</h1>
+<p>　　如果你不想把你的JS代码都放在一个文件中或者你想在你的应用中的其他部分重用一些功能，那么你就很可能要用到模块。你需要记住的一个变量是<code>export</code>，只要在你要暴露出来的方法前面加上<code>export</code>就可以了。<br>　　下面是我们应用的结构。Project类和WebProject类被放在application.js中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre>myproject (folder)  
+ |
+ -- modules (folder)
+ |   |
+ |   -- helpers.js
+ |
+ -- application.js
+</pre></td></tr></table></figure>
+
+
+<p>　　让我们把<code>arrayToString()</code>方法从<code>application.js</code>中分离出来然后放在<code>modules/helpers.js</code>模块中，这样我们就可以在其他地方重用它了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="comment">// modules/helper.js</span>
+export <span class="function"><span class="keyword">function</span> <span class="title">arrayToString</span><span class="params">(param)</span> {</span>  
+  <span class="comment">// some implementation</span>
+}
+</pre></td></tr></table></figure>
+
+
+<p>　　现在我们只需要在<code>application.js</code>中导入我们的模块就可以了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="code"><pre><span class="comment">// application.js</span>
+import { arrayToString } from <span class="string">'modules/helpers'</span>;
+
+<span class="keyword">class</span> WebProject extends Project {  
+  constructor(name, technologies) {
+    super(name);
+    <span class="keyword">this</span>.technologies = technology;
+  }
+
+  info() {
+    <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">" uses "</span> + arrayToString(<span class="keyword">this</span>.technology);
+  }
+}
+
+<span class="comment">// ...</span>
+</pre></td></tr></table></figure>
+
+
+<h1 id="ES6的其他特性">ES6的其他特性</h1>
+<p>　　下面两个ES6中的特性就比较有趣了。<code>let</code>和<code>const</code>。</p>
+<h2 id="let">let</h2>
+<p>　　为了理解<code>let</code>，首先我们需要记住<code>var</code>创建的是函数作用域的变量:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">printName</span><span class="params">()</span> {</span>  
+  <span class="keyword">if</span>(<span class="literal">true</span>) {
+    <span class="keyword">var</span> name = <span class="string">"Rafael"</span>;
+  }
+  console.log(name); <span class="comment">// Rafael</span>
+}
+</pre></td></tr></table></figure>
+
+
+<p>　　注意到，不像Java或者许多其他语言那样，Javascript中任何在一个函数内部创建的变量都会被提升到函数的顶部。这就意味着无论你在哪里声明的变量，效果就像都是在函数顶部声明的一样。这种行为就叫做<code>提升</code><br>　　所以上面的函数可以理解成下面这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">printName</span><span class="params">()</span> {</span>  
+  <span class="keyword">var</span> name; <span class="comment">// variable declaration is hoisted to the top</span>
+  <span class="keyword">if</span>(<span class="literal">true</span>) {
+    name = <span class="string">"Rafael"</span>;
+  }
+  console.log(name); <span class="comment">// Rafael</span>
+}
+</pre></td></tr></table></figure>
+
+
+<p>　　那么，<code>let</code>是如何工作的呢？<br>　　我们用同样的例子来看看:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">printName</span><span class="params">()</span> {</span>  
+  <span class="keyword">if</span>(<span class="literal">true</span>) {
+    <span class="keyword">let</span> name = <span class="string">"Rafael"</span>;
+  }
+  console.log(name); <span class="comment">// ReferenceError: name is not defined</span>
+}
+</pre></td></tr></table></figure>
+
+
+<p>　　由于<code>let</code>是在块内部，所以<code>name</code>变量只能在块中访问。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">printName</span><span class="params">()</span> {</span>  
+  <span class="keyword">var</span> name = <span class="string">"Hey"</span>;
+  <span class="keyword">if</span>(<span class="literal">true</span>) {
+    <span class="keyword">let</span> name = <span class="string">"Rafael"</span>;
+    console.log(name); <span class="comment">// Rafael</span>
+  }
+  console.log(name); <span class="comment">// Hey</span>
+}
+</pre></td></tr></table></figure>
+
+
+<p>　　在这个例子中，由于<code>let</code>引用了已经声明的变量，所以”Rafael”只在块内部合法。在块的外部<code>name</code>的值是”Hey”。<br>　　总之，<code>var</code>是函数作用域的而<code>let</code>是块级作用域的。</p>
+<h2 id="const">const</h2>
+<p>　　Javascript在过去很长一段时间都不支持创建常量。随着ES6的到来，你将可以创建常量并且保证它的值不会被改变。<br>　　创建常量的语法如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="keyword">const</span> SERVER_URL = <span class="string">"http://frontendjournal.com"</span>
+</pre></td></tr></table></figure>
+
+
+<h1 id="其他有趣的特性">其他有趣的特性</h1>
+<p>　　ECMAScript 6 同时还带来了很多其他特性:<code>Map</code>，<code>WeakMap</code>，<code>Generators</code>和<code>Proxies</code>。</p>
+<h1 id="什么时候可以开始使用ES6？">什么时候可以开始使用ES6？</h1>
+<p>　　Firefoxs是支持最多特性的浏览器而Juriy Zaytsev已经把主要浏览器的支持列出来了。 <a href="http://kangax.github.com/es5-compat-table/es6/" target="_blank">http://kangax.github.com/es5-compat-table/es6/</a><br>　　一些ES6特性在NodeJS中也可以使用。可以查看Alex Young的博客<a href="http://dailyjs.com/2012/10/15/preparing-for-esnext/" target="_blank">ES6 for Node</a>。</p>
+<h1 id="结论">结论</h1>
+<p>　　下一个版本的Javascript会带来一个更加简单更加友好的语法来帮助那些从面向对象语言转过来的开发者的学习。现在的唯一的问题就是主要浏览器对ES6的全面支持还需要一些时间。</p>
+<h1 id="译者注:">译者注:</h1>
+<p>　　目前对ECMAScript 6支持比较好的两个浏览器就是Chrome和Firefox，为了更好地体验ES6，我们需要下载开发者版本的浏览器，Chrome Canary <a href="http://www.google.com/intl/zh-CN/chrome/browser/canary.html" target="_blank">下载地址</a>，Firefox Aurora <a href="http://www.mozilla.org/en-US/firefox/channel/#aurora" target="_blank">下载地址</a>。<br>　　要在Firfox中开启ECMAScript 6，需要把<code>&lt;script type= &quot;text/javascript&quot;&gt;</code>标签改为<code>&lt;script type=&quot;applicationjavascript;version=1.8&quot;&gt;</code>。1.8是Firefox现在支持的版本最高的javascript。<br>　　在Chrome中开启ECMAScript 6，只需要使用严格模式就可以了，也就是在脚本前面加上<code>&quot;use strict&quot;</code>。不过在这之前还需要在地址栏中输入<code>chrome://flags/</code>，然后启用实验性 JavaScript。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Javascript/">Javascript</a><a href="/tags/ECMAScript 6/">ECMAScript 6</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"2176287895"},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+1889330" charset="utf-8"></script>      
+
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2014/05/23/前端优化-javascript篇(1脚本放在底部)/"  title="前端优化-Javascript篇(1.脚本放在底部)">
+ <strong>下一篇：</strong><br/> 
+ <span>前端优化-Javascript篇(1.脚本放在底部)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/ECMAScript 6/" title="ECMAScript 6">ECMAScript 6<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Javascript/" title="Javascript">Javascript<sup>2</sup></a></li>
+		
+			<li><a href="/tags/前端优化/" title="前端优化">前端优化<sup>1</sup></a></li>
+		
+			<li><a href="/tags/博客搭建/" title="博客搭建">博客搭建<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://yangjian.me" target="_blank" title="YangJian">Alimon's Blog</a></li>
+      <li><a href="http://zipperary.com/" target="_blank" title="zippera">Zippera's Blog</a></li>
+      <li><a href="http://brotherb.info/" target="_blank" title="brotherb">Spike's Blog</a></li>
+      <li><a href="http://hijiangtao.github.io/" target="_blank" title="JiangTao">Data.Blog</a></li>
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		
+		<a href="http://weibo.com/lakb248" target="_blank"><div class="author"></div></a>
+		
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello,I&#39;m LinBin. For now I&#39;m a graduate student in Guangzhou. <br/>
+			I&#39;ll share my learning experience with you at this blog.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/lakb248" target="_blank" class="icon-weibo" title="weibo"></a>
+		
+		
+		<a href="https://github.com/lakb248" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:lakb248@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2014 
+		
+		<a href="http://lakb248.github.io/about" target="_blank" title="Bin">Bin</a>
+		
+		</p>
+</div>
+</footer>
+    <!--<script src="/js/doSomething.js"></script>--> 
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"lakb248"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-51244875-1', 'lakb248.github.io');  
+ga('send', 'pageview');
+</script>
+
+
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script src="/js/totop.js"></script>
+
+<script type="text/x-mathjax-config"> 
+MathJax.Hub.Config({ 
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} 
+}); 
+</script>
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </body>
+</html>

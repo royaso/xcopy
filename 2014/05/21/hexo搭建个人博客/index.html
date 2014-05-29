@@ -1,0 +1,471 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo搭建个人博客 | &lt;h1&gt;My Coding Life&lt;/h1&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Bin">
+    
+    <meta name="description" content="一直想搭建一个自己的博客来记录自己的一些学习笔记，由于是学生党经济上有些吃紧所以一直没办法搭建起自己的博客。最近在网上无意中看到了可以借助GitHub来搭建自己的个人博客，于是就折腾了起来。我搭建博客用到的是GitHub+Hexo的搭配，下面就让我来介绍下我的博客搭建的整个过程。
+Hexo
+　　He">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/author.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/author.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/author.png">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/author.png" alt="&lt;h1&gt;My Coding Life&lt;/h1&gt;" title="&lt;h1&gt;My Coding Life&lt;/h1&gt;"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="&lt;h1&gt;My Coding Life&lt;/h1&gt;">&lt;h1&gt;My Coding Life&lt;/h1&gt;</a></h1>
+				<h2 class="blog-motto">Better Wife , Better Life</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/05/21/hexo搭建个人博客/" title="Hexo搭建个人博客" itemprop="url">Hexo搭建个人博客</a>
+  </h1>
+  <p class="article-author">By
+      <a href="http://lakb248.github.io/about" title="Bin" target="_blank">Bin</a>
+  <p class="article-time">
+    <time datetime="2014-05-21T11:40:16.000Z" itemprop="datePublished">发表于5月 21 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<p>一直想搭建一个自己的博客来记录自己的一些学习笔记，由于是学生党经济上有些吃紧所以一直没办法搭建起自己的博客。最近在网上无意中看到了可以借助GitHub来搭建自己的个人博客，于是就折腾了起来。我搭建博客用到的是GitHub+Hexo的搭配，下面就让我来介绍下我的博客搭建的整个过程。</p>
+<h1 id="Hexo">Hexo</h1>
+<p>　　Hexo是一个基于Node.js的快速简单的静态博客框架，利用它通过简单的几个命令就可以搭建一个个人博客。</p>
+<blockquote>
+<p>A fast, simple &amp; powerful blog framework,powered by Node.js.</p>
+</blockquote>
+<h1 id="安装Hexo">安装Hexo</h1>
+<p>　　我是在Windows上面进行搭建的，所以我这里就介绍下Windows上面的安装方法。安装Hexo首先需要下面两个条件:<br>　　- Node.js<br>　　- Git<br>　　这两个的安装方法大家Google下就好了，一堆堆的。有了这些我们就可以利用npm命令来安装hexo了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>    npm <span class="keyword">install</span> hexo -g
+</pre></td></tr></table></figure>
+
+
+<p>　　安装完hexo之后可以开始初始化博客了。
+　　</p>
+<h1 id="初始化博客">初始化博客</h1>
+<p>　　初始化Hexo博客只需要进入博客目录，然后执行下面这条命令就可以了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>    hexo init
+</pre></td></tr></table></figure>
+
+
+<h1 id="生成博客">生成博客</h1>
+<p> 　　初始化博客之后博客目录下会产生一些配置文件和模板文件，现在就要利用这些模板文件来生成我们的静态博客文件，通过下面这条命令就可以生成我们的博客</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>    hexo <span class="keyword">generate</span>
+</pre></td></tr></table></figure>
+
+
+<p>　　执行完命令之后，在博客目录下会产生一个public文件夹，这里面存放的就是我们的博客静态文件。</p>
+<h1 id="本地部署">本地部署</h1>
+<p>　　生成博客之后我们就可以开始在本地部署我们的博客</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>    hexo <span class="keyword">server</span>
+</pre></td></tr></table></figure>
+
+
+<p>　　现在我们打开浏览器访问<a href="http://localhost:4000" target="_blank">http://localhost:4000</a>  就可以看到我们的博客了。</p>
+<h1 id="部署到GitHub">部署到GitHub</h1>
+<p>　　通过上面这些步骤我们只是在本地搭建起了博客，要让别人看到还需要把它部署到GitHub上。<br>　　首先，当然是需要申请一个GitHub账号，然后新建一个Repository，接着在命名的时候需要注意，GitHubPage的名字必须用户名.github.com或者用户名.github.io。<br>　　创建完Repository之后，我们要配置Hexo的github地址然后才可以把我们的博客部署到GitHub上面。在博客目录底下打开_congig.yml，这就是Hexo的配置文件。找到下面这段代码</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>    <span class="comment"># Deployment</span>
+    <span class="comment">## Docs: http://hexo.io/docs/deployment.html</span>
+    deploy:
+    <span class="built_in">type</span>:
+</pre></td></tr></table></figure>
+
+
+<p>　　把上面的内容替换成你刚才创建的Repository地址，如下:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>    <span class="preprocessor"># Deployment</span>
+    <span class="preprocessor">## Docs: http://hexo.io/docs/deployment.html</span>
+    deploy:
+    type: github
+    repository: https://github<span class="preprocessor">.com</span>/用户名/用户名<span class="preprocessor">.github</span><span class="preprocessor">.io</span><span class="preprocessor">.git</span>
+    branch: master
+</pre></td></tr></table></figure>
+
+
+<p>　　创建Repository并且修改配置文件之后我们就可以把我们的博客部署到GitHub上面了，通过下面这个命令，过程中需要输入Git账号和密码:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>    hexo deploy
+</pre></td></tr></table></figure>
+
+
+<p>　　打开浏览器访问<a href="http://用户名.github.com" target="_blank">http://用户名.github.com</a> 或者 <a href="http://用户名.github.io" target="_blank">http://用户名.github.io</a> ，部署之后大约十分钟就可以看到博客效果了。</p>
+<h1 id="配置博客">配置博客</h1>
+<p>　　通过上面的步骤我们完成了博客的基本搭建工作，我们还可以通过修改配置文件来进行博客的个性化定制。<br>　　<br>　　首先是<strong><em>博客的标题以及作者</em></strong>，通过修改_congig.yml中相应的字段就可以设置标题和作者，如下:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre>    <span class="preprocessor"># Site</span>
+    title: &lt;h1&gt;My Coding Life&lt;/h1&gt; <span class="comment">//标题</span>
+    subtitle: Better Wife , Better Life <span class="comment">//副标题</span>
+    description: Better Wife , Better Life <span class="comment">//描述内容</span>
+    author: Bin <span class="comment">//作者</span>
+    email: lakb248@<span class="number">163.</span>com <span class="comment">//邮箱</span>
+    language: zh-CN <span class="comment">//语言</span>
+</pre></td></tr></table></figure>
+
+
+<p>　　其次是<strong><em>博客的主题</em></strong>，Hexo有许多现成的主题可以选择，在<a href="https://github.com/tommy351/hexo/wiki/Themes" target="_blank">这里</a>可以得到。下载相应的主题放到博客目录底下的themes文件夹底下。最后需要修改_config.yml中theme字段的值，如下:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>    <span class="array"># Extensions</span>
+    #<span class="array"># Plugins</span>: https:<span class="comment">//github.com/tommy351/hexo/wiki/Plugins</span>
+    #<span class="array"># Themes</span>: https:<span class="comment">//github.com/tommy351/hexo/wiki/Themes</span>
+    theme: 主题名
+</pre></td></tr></table></figure>
+
+
+<p>　　通过上面这一系列步骤，我们的个人博客可以正式上线了。Hexo还有很多其他的功能，比如评论，RSS。更多内容大家请看<a href="http://hexo.io/docs/" target="_blank">官方文档</a>。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/博客搭建/">博客搭建</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"2176287895"},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+1889330" charset="utf-8"></script>      
+
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/05/22/markdown初探/" title="Markdown初探">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Markdown初探</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/ECMAScript 6/" title="ECMAScript 6">ECMAScript 6<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Javascript/" title="Javascript">Javascript<sup>2</sup></a></li>
+		
+			<li><a href="/tags/前端优化/" title="前端优化">前端优化<sup>1</sup></a></li>
+		
+			<li><a href="/tags/博客搭建/" title="博客搭建">博客搭建<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://yangjian.me" target="_blank" title="YangJian">Alimon's Blog</a></li>
+      <li><a href="http://zipperary.com/" target="_blank" title="zippera">Zippera's Blog</a></li>
+      <li><a href="http://brotherb.info/" target="_blank" title="brotherb">Spike's Blog</a></li>
+      <li><a href="http://hijiangtao.github.io/" target="_blank" title="JiangTao">Data.Blog</a></li>
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		
+		<a href="http://weibo.com/lakb248" target="_blank"><div class="author"></div></a>
+		
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello,I&#39;m LinBin. For now I&#39;m a graduate student in Guangzhou. <br/>
+			I&#39;ll share my learning experience with you at this blog.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/lakb248" target="_blank" class="icon-weibo" title="weibo"></a>
+		
+		
+		<a href="https://github.com/lakb248" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:lakb248@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2014 
+		
+		<a href="http://lakb248.github.io/about" target="_blank" title="Bin">Bin</a>
+		
+		</p>
+</div>
+</footer>
+    <!--<script src="/js/doSomething.js"></script>--> 
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"lakb248"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-51244875-1', 'lakb248.github.io');  
+ga('send', 'pageview');
+</script>
+
+
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script src="/js/totop.js"></script>
+
+<script type="text/x-mathjax-config"> 
+MathJax.Hub.Config({ 
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} 
+}); 
+</script>
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </body>
+</html>
